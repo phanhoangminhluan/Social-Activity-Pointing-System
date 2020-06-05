@@ -26,7 +26,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
          * When messages are processed, the matching prefix is removed from the destination in order to form the lookup path.
          * This means annotations should not contain the destination prefix.
          */
-        registry.setApplicationDestinationPrefixes(WebSocketConstant.APPLICATION_DESTINATION_PREFIX);
+        registry.setApplicationDestinationPrefixes(WebSocketConstant.APP_PREFIX);
     }
 
     @Override

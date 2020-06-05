@@ -1,4 +1,4 @@
-package com.edu.fpt.saps.utility;
+package com.edu.fpt.saps.configuration.websocket;
 
 import com.edu.fpt.saps.constant.WebSocketConstant;
 import com.edu.fpt.saps.dto.UuidDTO;
@@ -10,7 +10,6 @@ import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
 
 import java.lang.reflect.Type;
-import java.util.UUID;
 
 public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
@@ -18,11 +17,11 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
     @Override
     public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
-        logger.info("New session established : " + session.getSessionId());
-        session.subscribe(WebSocketConstant.QR_CODE_SUBSCRIPTION, this);
-        logger.info("Subscribed to " + WebSocketConstant.QR_CODE_SUBSCRIPTION);
-        session.send(WebSocketConstant.QR_CODE_APP, "Generate new QR");
-        logger.info("Message sent to websocket server");
+//        logger.info("New session established : " + session.getSessionId());
+        session.subscribe(WebSocketConstant.QR_CODE_TOPIC, this);
+//        logger.info("Subscribed to " + WebSocketConstant.QR_CODE_TOPIC);
+        session.send(WebSocketConstant.QR_CODE_METHOD_WITH_PREFIX, "Generate new QR");
+//        logger.info("Message sent to websocket server");
         session.disconnect();
     }
 
@@ -39,7 +38,7 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
     @Override
     public void handleFrame(StompHeaders headers, Object payload) {
         UuidDTO msg = (UuidDTO) payload;
-        logger.info("Received : " + msg.getUuid());
+//        logger.info("Received : " + msg.getUuid());
     }
 
 }

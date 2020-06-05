@@ -15,6 +15,5 @@ public class EventStudentDTO {
 
     private String email;
     private Date checkIn;
-    private String eventId;
 
 }
