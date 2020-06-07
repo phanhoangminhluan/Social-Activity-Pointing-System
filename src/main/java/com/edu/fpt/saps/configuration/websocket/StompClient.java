@@ -31,7 +31,7 @@ public class StompClient {
         stompClient.setMessageConverter(new MappingJackson2MessageConverter());
     }
 
-    public void sendMsg(){
+    public void generateNewQrCode(){
         if(stompClient == null) {
             connectToTopic();
         }

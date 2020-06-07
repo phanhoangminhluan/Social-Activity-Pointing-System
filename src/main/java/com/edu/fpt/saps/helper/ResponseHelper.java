@@ -1,6 +1,7 @@
-package com.edu.fpt.saps.dto;
+package com.edu.fpt.saps.helper;
 
-import com.edu.fpt.saps.constant.ResponseConstant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,18 +11,20 @@ import org.springframework.http.ResponseEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ResponseDTO {
+public class ResponseHelper {
     private boolean isSuccess;
     private String messages;
     private Object body;
+    @JsonIgnore
+    private HttpStatus status;
 
-    public static ResponseEntity generateResponseObject(Boolean isSuccess, String messages, Object body, HttpStatus status) {
-        ResponseDTO responseDTO =  ResponseDTO.builder()
+    public ResponseEntity toResponseEntity() {
+        ResponseHelper responseHelper =  ResponseHelper.builder()
                 .isSuccess(isSuccess)
                 .messages(messages)
                 .body(body)
                 .build();
-        ResponseEntity responseEntity = new ResponseEntity<>(responseDTO, status);
+        ResponseEntity responseEntity = new ResponseEntity<>(responseHelper, status);
         return responseEntity;
     }
 }
