@@ -38,9 +38,11 @@ public class EventStudentController {
 
     @PostMapping("/student")
     public ResponseEntity registerNewStudent(@RequestBody PostEventStudentDTO postEventStudentDTO) throws Exception {
+
+        EventStudentDTO eventStudentDTO = null;
+        eventStudentDTO = eventStudentService.addThenReturn(postEventStudentDTO);
         stompClient.generateNewQrCode();
 
-        EventStudentDTO eventStudentDTO = eventStudentService.addThenReturn(postEventStudentDTO);
 
         return eventStudentDTO != null
 
