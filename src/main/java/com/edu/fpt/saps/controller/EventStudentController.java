@@ -36,6 +36,12 @@ public class EventStudentController {
         return uuidDTO;
     }
 
+    @GetMapping
+    public UuidDTO generateUuid() {
+        UuidDTO uuidDTO = UuidDTO.generateUUID();
+        return uuidDTO;
+    }
+
     @PostMapping("/student")
     public ResponseEntity registerNewStudent(@RequestBody PostEventStudentDTO postEventStudentDTO) throws Exception {
 
