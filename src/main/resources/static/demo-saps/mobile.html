@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <button id="btn">Click Me</button>
+        <script>
+            var xhr = new XMLHttpRequest();
+            var url = "http://localhost:8080/qr/student"
+            var data = {"email": "minhluan1998@gmai.com"}
+            // xhr.onload = // something
+            document.getElementById("btn").addEventListener(
+                "click",
+                function() {
+                    xhr.open("POST", url, false);
+                    xhr.send(data)
+                },
+                false
+            );
+        </script>
+    </body>
+</html>
