@@ -21,7 +21,6 @@ public abstract class MyAbstractService<E, ID extends Serializable, D> extends M
     public List<D> getAll() throws Exception {
 
         List<E> entites = repository.getAll();
-
         return  mappingHandler.toDtos(entites);
 }
 
@@ -44,14 +43,8 @@ public abstract class MyAbstractService<E, ID extends Serializable, D> extends M
     }
 
     public D deleteById(ID id) throws Exception {
-        try {
-            E entity = repository.getById(id);
-
-            repository.deleteById(id);
-            return mappingHandler.toDto(entity);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        E entity = repository.getById(id);
+        repository.deleteById(id);
+        return mappingHandler.toDto(entity);
     }
 }

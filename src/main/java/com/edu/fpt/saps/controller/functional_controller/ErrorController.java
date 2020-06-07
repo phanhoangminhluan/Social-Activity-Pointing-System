@@ -20,7 +20,7 @@ public class ErrorController extends AbstractErrorController {
     }
 
     @RequestMapping
-    public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
+    public ResponseEntity error(HttpServletRequest request) {
         return ResponseHelper.builder()
                 .isSuccess(false)
                 .messages(ResponseConstant.PAGE_NOT_FOUND)
