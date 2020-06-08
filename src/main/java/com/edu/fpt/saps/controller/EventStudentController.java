@@ -36,8 +36,7 @@ public class EventStudentController {
         return uuidDTO;
     }
 
-    @GetMapping("")
-    @ResponseBody
+    @GetMapping
     public UuidDTO generateUuid() {
         UuidDTO uuidDTO = UuidDTO.generateUUID();
         return uuidDTO;
