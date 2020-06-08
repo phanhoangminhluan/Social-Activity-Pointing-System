@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 public class StompClient {
 
-    private static String URL = "ws://localhost:8080" + WebSocketConstant.TOPIC_ENDPOINTS[0];
+    private static String URL = "ws://localhost:8443" + WebSocketConstant.TOPIC_ENDPOINTS[0];
 
     private WebSocketStompClient stompClient = null;
 
